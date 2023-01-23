@@ -1,5 +1,5 @@
 # wyze_timelapse.sh
-This is a script that will build a timelapse from your Wyze V2 using the files already stored on your Wyze SD Card. I decided to write this because the built-in timelapse function is pretty much a coin toss and can't be trusted. On a few occasions I lost 1 or 2 weeks worth of timelapses because the camera would simply decide not to save it. This will generate one for you using the playback footage, which seems to work fine. 
+This is a script that will build a timelapse from your Wyze V3 using the files already stored on your Wyze SD Card. I decided to write this because the built-in timelapse function is pretty much a coin toss and can't be trusted. On a few occasions I lost 1 or 2 weeks worth of timelapses because the camera would simply decide not to save it. This will generate one for you using the playback footage, which seems to work fine. 
 
 
 # Dependencies 
