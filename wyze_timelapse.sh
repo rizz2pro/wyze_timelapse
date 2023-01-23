@@ -14,7 +14,7 @@ stop_record=5
 # Take a frame every X minutes
 interval=10
 
-# dont edit below this line
+### dont edit below this line
 
 if [ -z $1 ]; then
 	read -p "Enter timelapse name: " timelapsename
@@ -25,11 +25,9 @@ fulldir=$basedir/$timelapsename
 mkdir -p $fulldir/images
 mydate=$(date +%m-%d-%Y)
 
+# pre cleanup
 rm -f $fulldir/.newlist $fulldir/.newlist.tmp $fulldir/.newlist.tmp2
-echo "[###] Generating File List"
-sleep 1
-#let count=1
-
+echo "[+] Generating file list for every $interval minutes"
 for time in $(seq -w 0 $interval 59); do
 	for i in $(find . -name ${time}.mp4); do
 		echo "$i" >> $fulldir/.newlist.tmp
@@ -55,21 +53,7 @@ for i in $(cat $fulldir/.newlist); do
       	echo " [+] $combined --> images/$combined.jpeg"
       	ffmpeg -n -i "$i" -frames:v 1 $fulldir/images/$combined.jpeg &> /dev/null
 done
-echo "[###] Converting to .mp4"
+echo "[###] Creating timelapse"
 cd $fulldir/images
 ffmpeg -framerate 30 -pattern_type glob -i '*.jpeg' -c:v libx264 -pix_fmt yuv420p ${fulldir}/${timelapsename}-$mydate.mp4
-echo Done
-
-# Concatenate them all into one Timelapse
-
-cd $fulldir
-rm -f .concat-list
-echo "file PRE_${timelapsename}.mp4" > .concat-list
-echo "file ${timelapsename}-$mydate.mp4" >> .concat-list
-#for i in $(ls -1 *.mp4 | grep -v FULL); do
-#	echo "[+] $i"
-#	echo "file $i" >> .concat-list
-#done
-
-echo Combining videos
-ffmpeg -y -f concat -i .concat-list -c copy FULL_${timelapsename}_${mydate}.mp4 &> /dev/null && echo "[+] $fulldir/FULL_${timelapsename}_${mydate}.mp4" done
+echo Done. ${fulldir}/${timelapsename}-$mydate.mp4
