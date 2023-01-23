@@ -29,8 +29,8 @@ Each image is ~195KB.
 The script stores the .jpeg files stored in the images folder within the timelapse directory, be aware of the sizes:
 
 - 24h @ 10min interval = 24MB/day (~720MB/month) 
-- 18h @ 10min interval = 18MB (~540MB/month)
-- 12h @ 10min interval = 12MB (360MB/month)
+- 18h @ 10min interval = 18MB/day (~540MB/month)
+- 12h @ 10min interval = 12MB/day (360MB/month)
 
 - 24h @ 20min interval = 12MB/day(360MB/month)
 - 18h @ 20min interval = 9MB/day(270MB/month)
