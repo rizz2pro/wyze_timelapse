@@ -20,17 +20,18 @@ Note: You can re-use the same timelapse name and the script will keep adding to 
 # SD Card Size vs Playback history
 This is how many days of playback the Wyze will save to the SDCard. Make sure to run the script before the Wyze starts overwriting older days and putting gaps in your timelapse. 
 
-64GB = 6 days
-128GB = 11 days
+- 64GB = 6 days
+- 128GB = 11 days
 
 # Size estimates
-Since the script keeps the .jpeg files stored in the images folder within the timelapse directory, be aware of the sizes:
-
 Each image is ~195KB.
-24h @ 10min interval = 24MB/day (~720MB/month) 
-18h @ 10min interval = 18MB (~540MB/month)
-12h @ 10min interval = 12MB (360MB/month)
 
-24h @ 20min interval = 12MB/day(360MB/month)
-18h @ 20min interval = 9MB/day(270MB/month)
-12h @ 20min interval = 6MB/day(180M/month)
+The script stores the .jpeg files stored in the images folder within the timelapse directory, be aware of the sizes:
+
+- 24h @ 10min interval = 24MB/day (~720MB/month) 
+- 18h @ 10min interval = 18MB (~540MB/month)
+- 12h @ 10min interval = 12MB (360MB/month)
+
+- 24h @ 20min interval = 12MB/day(360MB/month)
+- 18h @ 20min interval = 9MB/day(270MB/month)
+- 12h @ 20min interval = 6MB/day(180M/month)
