@@ -50,8 +50,12 @@ for i in $(cat $fulldir/.newlist); do
 	hour=$(echo $i | awk -F'/' '{ print $3 }')
 	min=$(echo $i | awk -F'/' '{ print $4 }')
 	combined="${date}-${hour}-${min}"
-      	echo " [+] $combined --> images/$combined.jpeg"
-      	ffmpeg -n -i "$i" -frames:v 1 $fulldir/images/$combined.jpeg &> /dev/null
+	if ls -1 $fulldir/images | grep $combined > /dev/null; then
+		echo "$combined.jpeg already exists. Skipping"
+	else
+	      	echo " [+] $combined --> images/$combined.jpeg"
+      		ffmpeg -n -i "$i" -frames:v 1 $fulldir/images/$combined.jpeg &> /dev/null
+	fi
 done
 echo "[###] Creating timelapse"
 cd $fulldir/images
