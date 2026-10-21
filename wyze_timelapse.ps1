@@ -76,6 +76,21 @@ foreach ($f in $files) {
     }
 }
 
+Write-Host ""
+Write-Host "[###] Images are ready in: $imagedir"
+Write-Host "      Delete any frames you don't want, then come back here."
+Start-Process explorer.exe $imagedir
+
+while ($true) {
+    $answer = Read-Host "Build the timelapse now? (yes/no)"
+    if ($answer -match '^(y|yes)$') { break }
+    if ($answer -match '^(n|no)$') {
+        Write-Host "Cancelled. Images are kept, so run the script again when you're ready."
+        exit 0
+    }
+    Write-Host "Please type yes or no."
+}
+
 Write-Host "[###] Creating timelapse"
 
 # Windows ffmpeg builds don't support glob patterns, so build a concat list instead
